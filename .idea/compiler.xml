@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spark_learning" />
+        <module name="spark-core" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel>
+      <module name="spark-core" target="1.8" />
+      <module name="spark_learning" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
