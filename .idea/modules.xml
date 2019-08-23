@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/spark-core/spark-core.iml" filepath="$PROJECT_DIR$/spark-core/spark-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/spark_learning.iml" filepath="$PROJECT_DIR$/.idea/spark_learning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spark-core/spark-core-java/sparkcorejava.iml" filepath="$PROJECT_DIR$/spark-core/spark-core-java/sparkcorejava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spark-core/spark-core-scala/sparkcorescala.iml" filepath="$PROJECT_DIR$/spark-core/spark-core-scala/sparkcorescala.iml" />
     </modules>
   </component>
 </project>
