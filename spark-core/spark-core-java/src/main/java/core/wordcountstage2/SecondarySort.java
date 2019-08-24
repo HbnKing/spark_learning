@@ -10,6 +10,8 @@ import org.apache.spark.api.java.function.VoidFunction;
 
 import scala.Tuple2;
 
+import static org.bouncycastle.asn1.x500.style.RFC4519Style.cn;
+
 /**
  * 二次排序
  * 1、实现自定义的key，要实现Ordered接口和Serializable接口，在key中实现自己对多个列的排序算法
@@ -29,33 +31,33 @@ public class SecondarySort {
 	
 		JavaRDD<String> lines = sc.textFile("C://Users//Administrator//Desktop//sort.txt");
 		
-		JavaPairRDD<cn.spark.study.core.SecondarySortKey, String> pairs = lines.mapToPair(
+		JavaPairRDD<SecondarySortKey, String> pairs = lines.mapToPair(
 				
-				new PairFunction<String, cn.spark.study.core.SecondarySortKey, String>() {
+				new PairFunction<String, core.wordcountstage2.SecondarySortKey, String>() {
 
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					public Tuple2<cn.spark.study.core.SecondarySortKey, String> call(String line) throws Exception {
+					public Tuple2<core.wordcountstage2.SecondarySortKey, String> call(String line) throws Exception {
 						String[] lineSplited = line.split(" ");  
-						cn.spark.study.core.SecondarySortKey key = new cn.spark.study.core.SecondarySortKey(
+						SecondarySortKey key = new core.wordcountstage2.SecondarySortKey(
 								Integer.valueOf(lineSplited[0]), 
 								Integer.valueOf(lineSplited[1]));  
-						return new Tuple2<cn.spark.study.core.SecondarySortKey, String>(key, line);
+						return new Tuple2<core.wordcountstage2.SecondarySortKey, String>(key, line);
 					}
 					
 				});
 		
-		JavaPairRDD<cn.spark.study.core.SecondarySortKey, String> sortedPairs = pairs.sortByKey();
+		JavaPairRDD<SecondarySortKey, String> sortedPairs = pairs.sortByKey();
 		
 		JavaRDD<String> sortedLines = sortedPairs.map(
 				
-				new Function<Tuple2<cn.spark.study.core.SecondarySortKey,String>, String>() {
+				new Function<Tuple2<SecondarySortKey,String>, String>() {
 
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					public String call(Tuple2<cn.spark.study.core.SecondarySortKey, String> v1) throws Exception {
+					public String call(Tuple2<SecondarySortKey, String> v1) throws Exception {
 						return v1._2;
 					}
 					
